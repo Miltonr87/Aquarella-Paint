@@ -17,7 +17,6 @@
                 brush.arc(x, y, 9, 0, 2 * 3.14);
                 brush.fill();
             }
-            console.log(`${x} , + ${y}`);
         }
 
         canvas.onmousemove = drawCircle;
