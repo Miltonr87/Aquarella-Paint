@@ -1,35 +1,35 @@
-const paleta = document.querySelector('input');
-    const tela = document.querySelector('canvas');
-    const pincel = tela.getContext('2d');
+    const input = document.querySelector('input');
+    const canvas = document.querySelector('canvas');
+    const brush = canvas.getContext('2d');
 
-        pincel.fillStyle = 'white';
-        pincel.fillRect(0, 0, 800, 600);
+        brush.fillStyle = 'white';
+        brush.fillRect(0, 0, 800, 600);
 
-        var desenha = false;
+        let draw = false;
 
-        function desenhaCirculo(evento) {
+        function drawCircle (event) {
 
-            if (desenha) {
-                var x = evento.pageX - tela.offsetLeft;
-                var y = evento.pageY - tela.offsetTop;
-                pincel.fillStyle = paleta.value;         // sempre pega o valor atual da paleta!
-                pincel.beginPath();
-                pincel.arc(x, y, 9, 0, 2 * 3.14);
-                pincel.fill();
+            if (draw) {
+                let x = event.pageX - canvas.offsetLeft;
+                let y = event.pageY - canvas.offsetTop;
+                brush.fillStyle = input.value;         // always take the current value of the input!
+                brush.beginPath();
+                brush.arc(x, y, 9, 0, 2 * 3.14);
+                brush.fill();
             }
-            console.log(x + ',' + y);
+            console.log(`${x} , + ${y}`);
         }
 
-        tela.onmousemove = desenhaCirculo;
+        canvas.onmousemove = drawCircle;
 
-     /* atribuindo diretamente a função anônima */
-        tela.onmousedown = function () {
+        // assigning an anonymous function
+        canvas.onmousedown = function () {
 
-            desenha = true;
+            draw = true;
         }
 
-        // atribuindo diretamente a função anônima
-        tela.onmouseup = function () {
+        // assigning an anonymous function
+        canvas.onmouseup = function () {
 
-            desenha = false;
+            draw = false;
         }
